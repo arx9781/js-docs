@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Elements with JS DOM</title>
+  </head>
+  <body style="background-color: #161616; color: white">
+    <ul class="languages">
+      <li>Javascript</li>
+    </ul>
+  </body>
+  <script>
+    const addLanguage = (language) => {
+      const li = document.createElement("li");
+      li.appendChild(document.createTextNode(language));
+      document.querySelector(".languages").appendChild(li);
+    };
+
+    addLanguage("Python");
+    addLanguage("Ruby");
+    addLanguage("Golang");
+
+    // edit an element
+    const fourthLang = document.querySelector("li:nth-child(4)");
+    const replaceLang = document.createElement("li");
+    replaceLang.textContent = "Typescript";
+    fourthLang.replaceWith(replaceLang);
+    replaceLang.style.color = "skyblue";
+
+    // remove an element
+    const ul = document.querySelector(".languages");
+    ul.removeChild(document.querySelector("li:nth-child(3)"));
+    // can also simply use replaceLang.remove()
+  </script>
+</html>
