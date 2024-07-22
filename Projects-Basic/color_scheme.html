@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Scheme Switcher</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    .mainWrapper {
+      width: 100vw;
+      min-height: 100vh;
+      background-color: rgb(0, 0, 0);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: #d6d6d6;
+
+      .content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        .button-container {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-top: 1rem;
+
+          .btn {
+            padding: 0.4rem 0.8rem;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            font-weight: bold;
+          }
+
+          .btn:hover {
+            background-color: #d6d6d6;
+          }
+
+          .one {
+            background-color: red;
+          }
+
+          .two {
+            background-color: green;
+          }
+
+          .three {
+            background-color: blue;
+          }
+
+          .four {
+            background-color: yellow;
+          }
+
+          .five {
+            background-color: black;
+            color: white;
+          }
+        }
+      }
+    }
+  </style>
+  <body>
+    <div class="mainWrapper">
+      <div class="content">
+        <h1>Color Scheme Switcher</h1>
+        <div class="button-container">
+          <button class="btn one" onclick="redBg()">Red</button>
+          <button class="btn two" onclick="greenBg()">Green</button>
+          <button class="btn three" onclick="blueBg()">Blue</button>
+          <button class="btn four" onclick="yellowBg()">Yellow</button>
+          <button class="btn five" onclick="blackBg()">Black</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const mainWrapper = document.querySelector(".mainWrapper");
+
+    const redBg = () => {
+      mainWrapper.style.backgroundColor = "#ff0000";
+    };
+
+    const greenBg = () => {
+      mainWrapper.style.backgroundColor = "#00ff00";
+    };
+
+    const blueBg = () => {
+      mainWrapper.style.backgroundColor = "#0000ff";
+    };
+
+    const yellowBg = () => {
+      mainWrapper.style.backgroundColor = "yellow";
+    };
+    const blackBg = () => {
+      mainWrapper.style.backgroundColor = "black";
+    };
+  </script>
+</html>

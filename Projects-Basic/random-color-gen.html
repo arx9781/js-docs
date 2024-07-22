@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Color Generator</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    body {
+      background: #161616;
+      color: #f7f7f7;
+    }
+    #main-wrapper {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+
+      #toast-div {
+        padding: 0.5rem;
+        border-radius: 10px;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        color: #161616;
+        min-width: 400px;
+
+        .empty-box {
+          min-width: 125px;
+          height: 125px;
+          margin: 0.5rem;
+          background-color: #161616;
+          border-radius: 5px;
+        }
+
+        .content {
+          display: flex;
+          align-items: end;
+          justify-content: space-between;
+          flex-direction: column;
+          padding: 0;
+          width: 100%;
+          margin: 0 0.5rem;
+          border-radius: 5px;
+
+          #text-par {
+            font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+              sans-serif;
+            font-weight: bold;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+          }
+
+          button {
+            padding: 0.4rem 0.8rem;
+            background: #eeeeee;
+            border: none;
+            border-radius: 5px;
+            color: #161616;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 0.5rem;
+          }
+
+          button:hover {
+            transform: translate(-5px, -5px);
+            box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+          }
+
+          button:focus {
+            background: #161616;
+            color: #f7f7f7;
+          }
+        }
+      }
+    }
+  </style>
+  <body>
+    <div id="main-wrapper" class="color-container">
+      <div id="toast-div" class="color-box">
+        <span class="empty-box" id="mini-background"></span>
+        <div class="content">
+          <p id="text-par">HEX: <span id="hex-par">#161616</span></p>
+          <button id="copy">Copy</button>
+          <button id="gen">New Background</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const background = document.querySelector(".color-container");
+    const miniBg = document.querySelector("#mini-background");
+    const hexValue = document.querySelector("#hex-par");
+    const gen = document.querySelector("#gen");
+    const copy = document.querySelector("#copy");
+
+    const getRandomColor = () => {
+      let letters = "0123456789ABCDEF";
+      let color = "#";
+
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    };
+
+    const changeBackgroundColor = () => {
+      const newColor = getRandomColor();
+
+      background.style.backgroundColor = newColor;
+      miniBg.style.backgroundColor = newColor;
+      hexValue.textContent = `${newColor}`;
+    };
+
+    gen.addEventListener("click", changeBackgroundColor);
+
+    copy.addEventListener("click", () => {
+      navigator.clipboard.writeText(hexValue.textContent);
+      alert("Copied to clipboard!");
+    });
+  </script>
+</html>
